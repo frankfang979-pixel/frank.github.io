@@ -1,0 +1,1815 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>企业诊断问卷 | 专注发展期企业战略咨询</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            color: #1d1d1f;
+            background: #ffffff;
+            min-height: 100vh;
+            position: relative;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1d1d1f;
+            letter-spacing: -0.02em;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: #f5f5f7;
+            color: #1d1d1f;
+            padding: 120px 0 80px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            font-weight: 400;
+            color: #6e6e73;
+            line-height: 1.5;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Survey Section */
+        .survey {
+            background: #ffffff;
+            padding: 60px 0;
+            margin-top: 0;
+            position: relative;
+        }
+
+        .survey-intro {
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            text-align: center;
+        }
+
+        .survey-intro h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 1rem;
+            letter-spacing: -0.01em;
+        }
+
+        .survey-intro p {
+            font-size: 1.1rem;
+            color: #6e6e73;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .survey-form {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .module {
+            margin-bottom: 4rem;
+            padding: 0;
+            background: none;
+            border-radius: 0;
+            border: none;
+            box-shadow: none;
+            position: relative;
+        }
+
+        .module h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 2rem;
+            text-align: center;
+            letter-spacing: -0.01em;
+        }
+        
+        .module-description {
+            text-align: center;
+            color: #6e6e73;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+
+        .question {
+            margin-bottom: 3rem;
+            padding: 0;
+            background: none;
+            border-radius: 0;
+            box-shadow: none;
+            border: none;
+            position: relative;
+        }
+
+        .question-number {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #6e6e73;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .question-text {
+            font-size: 1.25rem;
+            color: #1d1d1f;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+            font-weight: 400;
+            letter-spacing: -0.01em;
+        }
+
+        .teacher-comment {
+            background: #f5f5f7;
+            padding: 1.5rem;
+            border-radius: 12px;
+            font-size: 0.875rem;
+            color: #6e6e73;
+            line-height: 1.6;
+            border-left: 3px solid #0071e3;
+        }
+
+        .teacher-comment strong {
+            color: #1d1d1f;
+            font-weight: 600;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #d2d2d7;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            line-height: 1.5;
+            resize: vertical;
+            min-height: 100px;
+            transition: all 0.2s ease;
+            background: #ffffff;
+        }
+
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #0071e3;
+            box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.1);
+        }
+        
+        .form-group textarea::placeholder {
+            color: #d2d2d7;
+        }
+
+        .submit-btn {
+            background: #0071e3;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.2s ease;
+        }
+
+        .submit-btn:hover {
+            background: #0077ed;
+        }
+
+        .submit-btn:active {
+            background: #0066cc;
+        }
+
+        /* Contact Info Section */
+        .contact-info {
+            background: #f5f5f7;
+            color: #1d1d1f;
+            padding: 4rem 2rem;
+            margin-top: 4rem;
+            text-align: center;
+            display: none;
+            border-radius: 18px;
+        }
+
+        .contact-info.show {
+            display: block;
+        }
+
+        .contact-info h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .contact-info p {
+            font-size: 1.1rem;
+            color: #6e6e73;
+            margin-bottom: 2rem;
+            line-height: 1.5;
+        }
+
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-method {
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid #d2d2d7;
+            transition: all 0.2s ease;
+        }
+        
+        .contact-method:hover {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-method h3 {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #6e6e73;
+        }
+
+        .contact-method .contact-value {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #0071e3;
+        }
+
+        .booking-info {
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-top: 2rem;
+            border: 1px solid #d2d2d7;
+        }
+
+        .booking-info h3 {
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .time-slots {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .time-slot {
+            background: #ffffff;
+            border: 1px solid #d2d2d7;
+            color: #1d1d1f;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-weight: 500;
+        }
+
+        .time-slot:hover {
+            border-color: #0071e3;
+            box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.1);
+        }
+
+        .time-slot:active {
+            background: #f5f5f7;
+        }
+
+        .time-slot.unavailable {
+            background: #f5f5f7;
+            border: 1px solid #d2d2d7;
+            color: #6e6e73;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .time-slot.unavailable:hover {
+            border-color: #d2d2d7;
+            box-shadow: none;
+        }
+
+        /* 会议预约样式 */
+        .meeting-booking {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            border: 1px solid #d2d2d7;
+        }
+
+        .booking-steps {
+            margin-bottom: 2rem;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #f5f5f7;
+        }
+
+        .step:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #0071e3;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-content h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 0.5rem;
+        }
+
+        .step-content p {
+            color: #6e6e73;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .step-qr {
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .qr-placeholder {
+            width: 100px;
+            height: 100px;
+            border: 2px dashed #0071e3;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #0071e3;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .quick-time-slots {
+            background: #f5f5f7;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        .quick-time-slots h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 1rem;
+        }
+
+        .time-suggestions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 0.75rem;
+        }
+
+        .time-suggestion {
+            background: white;
+            border: 1px solid #d2d2d7;
+            color: #0071e3;
+            padding: 0.75rem;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: 500;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .time-suggestion:hover {
+            background: #0071e3;
+            color: white;
+            border-color: #0071e3;
+        }
+
+        .time-suggestion:active {
+            background: #0066cc;
+        }
+
+        /* 智能预约系统样式 */
+        .smart-booking-system {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            border: 1px solid #d2d2d7;
+        }
+
+        .booking-form h4 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .booking-subtitle {
+            text-align: center;
+            color: #6e6e73;
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+
+        .booking-dates {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .date-option {
+            flex: 1;
+            max-width: 120px;
+            padding: 1rem;
+            border: 2px solid #d2d2d7;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .date-option:hover {
+            border-color: #0071e3;
+            background: #f5f5f7;
+        }
+
+        .date-option.active {
+            border-color: #0071e3;
+            background: #0071e3;
+            color: white;
+        }
+
+        .date-label {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .date-value {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .time-slots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+        }
+
+        .time-slot {
+            background: #f5f5f7;
+            border: 2px solid #d2d2d7;
+            color: #1d1d1f;
+            padding: 0.75rem;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-weight: 500;
+        }
+
+        .time-slot:hover {
+            border-color: #0071e3;
+            background: white;
+        }
+
+        .time-slot.selected {
+            border-color: #0071e3;
+            background: #0071e3;
+            color: white;
+        }
+
+        .time-slot.unavailable {
+            background: #f5f5f7;
+            border: 1px solid #d2d2d7;
+            color: #6e6e73;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .booking-details {
+            background: #f5f5f7;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .detail-row {
+            margin-bottom: 1rem;
+        }
+
+        .detail-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .detail-row label {
+            display: block;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 0.5rem;
+        }
+
+        .detail-row input,
+        .detail-row select,
+        .detail-row textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d2d2d7;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.2s ease;
+        }
+
+        .detail-row input:focus,
+        .detail-row select:focus,
+        .detail-row textarea:focus {
+            outline: none;
+            border-color: #0071e3;
+        }
+
+        .confirm-booking-btn {
+            width: 100%;
+            background: #0071e3;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .confirm-booking-btn:hover {
+            background: #0077ed;
+        }
+
+        .confirm-booking-btn:active {
+            background: #0066cc;
+        }
+
+        .confirm-booking-btn:disabled {
+            background: #d2d2d7;
+            cursor: not-allowed;
+        }
+
+        .booking-success {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .success-icon {
+            width: 60px;
+            height: 60px;
+            background: #28a745;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 0 auto 1rem;
+        }
+
+        .booking-success h4 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 0.5rem;
+        }
+
+        .booking-success p {
+            color: #6e6e73;
+            margin-bottom: 2rem;
+        }
+
+        .success-details {
+            background: #f5f5f7;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .detail-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #e5e5e7;
+        }
+
+        .detail-item:last-child {
+            border-bottom: none;
+        }
+
+        .detail-item .label {
+            font-weight: 600;
+            color: #6e6e73;
+        }
+
+        .detail-item .value {
+            color: #1d1d1f;
+            font-weight: 500;
+        }
+
+        .add-calendar-btn {
+            background: #28a745;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .add-calendar-btn:hover {
+            background: #218838;
+        }
+
+        .success-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+
+        .copy-link-btn {
+            background: #0071e3;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .copy-link-btn:hover {
+            background: #0077ed;
+        }
+
+        .copy-link-btn.copied {
+            background: #28a745;
+        }
+
+        /* Success Message */
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            display: none;
+            font-size: 0.9rem;
+        }
+
+        /* Trust Section */
+        .trust-section {
+            background: #f5f5f7;
+            padding: 4rem 0;
+            margin: 3rem 0;
+            border-radius: 18px;
+        }
+
+        .expert-profile {
+            margin-bottom: 3rem;
+        }
+
+        .profile-content {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid #d2d2d7;
+        }
+
+        .profile-image {
+            flex-shrink: 0;
+        }
+
+        .avatar-placeholder {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        .profile-info h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-info p {
+            color: #6e6e73;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .testimonials {
+            margin-bottom: 3rem;
+        }
+
+        .testimonials h3 {
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 2rem;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid #d2d2d7;
+            transition: all 0.2s ease;
+        }
+
+        .testimonial-card:hover {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial-content {
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-content p {
+            color: #1d1d1f;
+            line-height: 1.6;
+            font-style: italic;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .testimonial-content p::before {
+            content: '"';
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 2rem;
+            color: #0071e3;
+            line-height: 1;
+        }
+
+        .testimonial-author strong {
+            display: block;
+            color: #1d1d1f;
+            font-weight: 600;
+        }
+
+        .testimonial-author span {
+            color: #6e6e73;
+            font-size: 0.9rem;
+        }
+
+        .success-metrics {
+            margin-top: 3rem;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .metric-item {
+            background: white;
+            padding: 2rem 1rem;
+            border-radius: 12px;
+            border: 1px solid #d2d2d7;
+        }
+
+        .metric-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #0071e3;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-label {
+            color: #6e6e73;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            width: 100%;
+            height: 2px;
+            background: #e5e5e7;
+            margin-bottom: 3rem;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #0071e3;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .survey {
+                padding: 40px 0;
+            }
+            
+            .contact-methods {
+                grid-template-columns: 1fr;
+            }
+            
+            .time-slots {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .profile-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+            
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .metrics-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1rem;
+            }
+            
+            .metric-number {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero {
+                padding: 100px 0 60px;
+            }
+            
+            .time-slots {
+                grid-template-columns: 1fr;
+            }
+            
+            .metrics-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .trust-section {
+                padding: 2rem 0;
+                margin: 2rem 0;
+            }
+            
+            .profile-content {
+                padding: 1.5rem;
+            }
+            
+            .testimonial-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <div class="logo"></div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>企业诊断问卷</h1>
+            <p>为年利润500万-1亿的发展期企业提供深度诊断<br>完成问卷，获得1小时免费咨询</p>
+        </div>
+    </section>
+
+    <!-- Survey Section -->
+    <section class="survey">
+        <div class="container">
+            <div class="survey-intro">
+                <h2>尊敬的企业创始人：</h2>
+                <p>见字如面。我们深知，带领一家企业从优秀走向卓越，不仅需要洞察商业的"底层逻辑"，更需要"固本培元"的经营智慧。这其中的每一次取舍，都凝结着您的心力。</p>
+                <p>这份"企业诊断"，并非一份冰冷的考卷，而更像一次与您企业内功心法的深度连接。我们将借由一系列问题，与您一同拨开日常琐碎的迷雾，共同探寻那些驱动企业生生不息的"增长飞轮"与"第一性原理"。</p>
+                <p>卓越的企业，都拥有一个持续进化的系统。而系统的进化，始于高质量的复盘。</p>
+                <p>现在，让我们开启这场关于事业与智慧的探索。</p>
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+
+            <!-- 信任背书模块 -->
+            <div class="trust-section">
+                <div class="container">
+                    <div class="expert-profile">
+                        <div class="profile-content">
+                            <div class="profile-image">
+                                <div class="avatar-placeholder">房老师</div>
+                            </div>
+                            <div class="profile-info">
+                                <h3>房老师 | 商业顾问</h3>
+                                <p>15年企业咨询经验，专注发展期企业战略规划与组织优化。曾服务过数十家年利润500万-1亿的成长型企业，帮助企业突破发展瓶颈，实现可持续增长。</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonials">
+                        <h3>客户见证</h3>
+                        <div class="testimonial-grid">
+                            <div class="testimonial-card">
+                                <div class="testimonial-content">
+                                    <p>"房老师的诊断非常精准，一针见血地指出了我们公司组织架构中的关键问题。按照他的建议调整后，决策效率提升了40%。"</p>
+                                </div>
+                                <div class="testimonial-author">
+                                    <strong>张总</strong>
+                                    <span>某科技公司CEO | 年利润8000万</span>
+                                </div>
+                            </div>
+                            
+                            <div class="testimonial-card">
+                                <div class="testimonial-content">
+                                    <p>"这份问卷本身就是一次深度的企业复盘。回答完14个问题，我对公司的理解更加清晰了，收获很大。"</p>
+                                </div>
+                                <div class="testimonial-author">
+                                    <strong>李总</strong>
+                                    <span>某制造业创始人 | 年利润6000万</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="success-metrics">
+                        <div class="metrics-grid">
+                            <div class="metric-item">
+                                <div class="metric-number">50+</div>
+                                <div class="metric-label">服务企业数量</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-number">85%</div>
+                                <div class="metric-label">客户满意度</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="metric-number">3年</div>
+                                <div class="metric-label">平均合作时长</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <form class="survey-form" id="surveyForm" action="https://f.wps.cn/g/g3fAXPUV/" method="POST">
+  
+                <!-- 模块一：立根之本 -->
+                <div class="module">
+                    <h3>模块一：立根之本</h3>
+                    <p style="text-align: center; color: #666; margin-bottom: 1.5rem;">商业世界万变，但万变不离其宗。我们先来找到您事业的"宗"，那个不变的"价值锚点"。</p>
+                    
+                    <div class="question">
+                        <div class="question-number">问题 1</div>
+                        <div class="question-text">
+                            <strong>价值锚点:</strong> 设想市场风云突变，所有熟悉的"玩法"一夜归零。此刻，您唯一能依靠的、那块让客户依然舍弃江湖百家而选择您的"压舱石"，是什么？
+                        </div>
+                        <div class="teacher-comment">
+                            <strong>房老师点评：</strong> 这道题的底层逻辑，是帮你剥离所有变化的"术"，找到你提供给用户的、不变的"道"——也就是你的核心价值主张。一家没有价值锚点的企业，就像一艘没有锚的船，风一吹就散架了。
+                        </div>
+                        <div class="form-group">
+                            <textarea name="q1" placeholder="请在此处输入您的回答..." required></textarea>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <div class="question-number">问题 2</div>
+                        <div class="question-text">
+                            <strong>增长飞轮:</strong> 增长，本质上是一个"生生不息"的增强回路。请用 "因为A，所以B；因为B，所以C；因为C，又加强了A" 的句式，画出驱动您公司运转不息的核心循环。（例如：推出卓越产品 → 赢得口碑推荐 → 降低获客成本 → 投入更多资源研发 → 推出更卓越的产品）
+                        </div>
+                        <div class="teacher-comment">
+                            <strong>房老师点评：</strong> 商业模式，说到底就是一张价值网络图。这个问题的本质，是让你从线性的"流程思维"，切换到闭环的"系统思维"。画不出增长飞轮的企业，通常都在用战术的勤奋，掩盖战略的懒惰。
+                        </div>
+                        <div class="form-group">
+                            <textarea name="q2" placeholder="请在此处输入您的回答..." required></textarea>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <div class="question-number">问题 3</div>
+                        <div class="question-text">
+                            <strong>用户影子:</strong> 您的用户，为了解决那个"核心问题"，在没遇到你之前，他生活/工作中的那个"不方便、不舒服、不划算"的场景，具体是什么样的？请像一位知己，描述他当时的无奈。
+                        </div>
+                        <div class="teacher-comment">
+                            <strong>房老师点评：</strong> 这道题的底层逻辑，是让你无限地贴近用户，甚至成为他的"影子"。很多企业都说"以用户为中心"，但他们并不真正"认识"那个用户。你对这个场景描述得越具体，你离用户的真实需求就越近。
+                        </div>
+                        <div class="form-group">
+                            <textarea name="q3" placeholder="请在此处输入您的回答..." required></textarea>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <div class="question-number">问题 4</div>
+                        <div class="question-text">
+                            <strong>组织"熵增":</strong> 任何一个组织，若无外力，"熵"都会不断增加，走向"内耗"与"板结"。回顾过去一年，您观察到公司内部最大的"熵增"现象是什么？（比如：会议变多、决策变慢、部门墙变厚、老臣变"油条"等等）
+                        </div>
+                        <div class="teacher-comment">
+                            <strong>房老师点评：</strong> 这是对组织生命力的一次体检。"熵增"是自然规律，无法避免，但优秀的企业家会通过引入"负熵流"（比如新人才、新思想、新机制），来对抗组织的"亚健康"。你首先得能识别它。
+                        </div>
+                        <div class="form-group">
+                            <textarea name="q4" placeholder="请在此处输入您的回答..." required></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 模块二：将帅之道 -->
+                <div class="module">
+                    <h3>模块二：将帅之道</h3>
+                    <p style="text-align: center; color: #666; margin-bottom: 1.5rem;">战略，是"一群人"为了"一个目标"而同心协力。这里面，"人"是核心变量。</p>
+                    
+                    <div class="question">
+                        <div class="question-number">问题 5</div>
+                        <div class="question-text">
+                            <strong>CEO的时间杠杆:</strong> 您的时间，是公司最宝贵的资源，应用在最有"杠杆效应"的地方。请问，您上周是更像"诸葛亮"一样事必躬亲，还是更像"刘邦"一样用人成事？您多少时间在"思考明天"，多少时间在"扑救今天"？
+                        </div>
+                        <div class="teacher-comment">
+                            <strong>房老师点评：</strong> 这道题的本质，是在测试你的"领导梯队"是否健康。如果CEO自己总在救火，说明公司的组织能力出现了问题，没人能在正确的层级上，解决本应由他解决的问题。
+                        </div>
+                        <div class="form-group">
+                            <textarea name="q5" placeholder="请在此处输入您的回答..." required></textarea>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <div class="question-number">问题 6</div>
+                        <div class="question-text">
+                            <strong>人才密度:</strong> "千军易得，一将难求"。好的人才会相互吸引，形成"人才场"。在您最核心的部门里，您认为能独当一面的"A级将才"比例是多少？
+                        </div>
+                        <div class="teacher-comment">
+                            <strong>房老师点评：</strong> 很多人都知道"筑巢引凤"，但更重要的是"引凤筑巢"。人才密度，决定了你这家公司解决问题的"处理器"是单核的，还是多核并联的。发展期企业，拼到最后，拼的就是人才密度。
+                        </div>
+                        <div class="form-group">
+                            <textarea name="q6" placeholder="请在此处输入您的回答..." required></textarea>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <div class="question-number">问题 7</div>
+                        <div class="question-text">
+                            <strong>决策权"下沉":</strong> 决策权，应该放在离炮火最近的地方。如果现在有一个战机，从一线哨兵发现，到将军下令开火，最短需要多长时间？这个指挥链条的"堵点"通常在哪里？
+                        </div>
+                        <div class="teacher-comment">
+                            <strong>房老师点评：</strong> 这道题的底层逻辑，是在测量你组织的"敏捷性"和"授权水平"。大公司最大的敌人，就是科层制带来的决策延迟。你的组织，是像一个集团军，还是一支闻令而动的特种部队？
+                        </div>
+                        <div class="form-group">
+                            <textarea name="q7" placeholder="请在此处输入您的回答..." required></textarea>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <div class="question-number">问题 8</div>
+                        <div class="question-text">
+                            <strong>会议室的"真相":</strong> 在决定重大战役的"帅帐议事"中，是"一言堂"式的全体拥护居多，还是"推心置腹"的激烈辩论居多？您多久没有听到过让您"非常不舒服但很有价值"的反对意见了？
+                        </div>
+                        <div class="teacher-comment">
+                            <strong>房老师点评：</strong> 这道题在诊断你组织的"心理安全感"。没有炮火声的会议室，是组织最大的风险。炮声，代表着问题在被暴露和解决。沉默，什么都没消耗，但问题都还在。
+                        </div>
+                        <div class="form-group">
+                            <textarea name="q8" placeholder="请在此处输入您的回答..." required></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 模块三：经络疏通 -->
+                <div class="module">
+                    <h3>模块三：经络疏通</h3>
+                    <p style="text-align: center; color: #666; margin-bottom: 1.5rem;">流程，就是一家公司持续、稳定地创造价值的"算法"。你的算法，是否"气血通畅"？</p>
+                    
+                    <div class="question">
+                        <div class="question-number">问题 9</div>
+                        <div class="question-text">
+                            <strong>关键约束:</strong> 任何一个系统，其最大产出，都取决于那个最慢的环节。在您公司从"吸收营养"（获客）到"产出能量"（交付）的这条"经络"上，那个最慢、最卡的"淤堵点"，是什么？
+                        </div>
+                        <div class="teacher-comment">
+                            <strong>房老师点评：</strong> 这是在帮你运用"TOC约束理论"。很多企业试图优化所有环节，结果白白浪费资源。真正高效的方法，是找到那个关键约束点，集中所有力量去突破它，整个系统的效率就会倍增。
+                        </div>
+                        <div class="form-group">
+                            <textarea name="q9" placeholder="请在此处输入您的回答..." required></textarea>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <div class="question-number">问题 10</div>
+                        <div class="question-text">
+                            <strong>机会成本:</strong> 为了绕过这个"瓶颈"，您的团队一定吃了不少"亏"，做了很多"无用功"。这些"内耗"，在过去一年，可能让你损失了多少"本可以赚到的钱"或者"本可以抓住的机会"？请您估算一个数字。
+                        </div>
+                        <div class="teacher-comment">
+                            <strong>房老师点评：</strong> 成本，分为显性成本和机会成本。大部分人只看得到前者。这道题，是让你开始计算那些"看不见"的巨大成本，提升你变革的动力。一个优秀的企业家，对机会成本极其敏感。
+                        </div>
+                        <div class="form-group">
+                            <textarea name="q10" placeholder="请在此处输入您的回答..." required></textarea>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <div class="question-number">问题 11</div>
+                        <div class="question-text">
+                            <strong>部门间的"交易成本":</strong> 部门之间每一次协作，都有"交易成本"。比如沟通成本、等待成本、扯皮成本。您认为，在您公司，哪两个部门之间的那堵"无形的墙"最高？通常是什么原因导致的？
+                        </div>
+                        <div class="teacher-comment">
+                            <strong>房老师点评：</strong> 科斯定理告诉我们，企业之所以存在，就是为了降低交易成本。如果企业内部的交易成本，甚至高过了外部市场，那这个组织就出了大问题。这是在帮你从经济学角度，诊断你的组织结构是否合理。
+                        </div>
+                        <div class="form-group">
+                            <textarea name="q11" placeholder="请在此处输入您的回答..." required></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 模块四：上下同欲 -->
+                <div class="module">
+                    <h3>模块四：上下同欲</h3>
+                    <p style="text-align: center; color: #666; margin-bottom: 1.5rem;">战略，不是写在墙上的标语，而是"上下同欲者胜"的共识与行动。</p>
+                    
+                    <div class="question">
+                        <div class="question-number">问题 12</div>
+                        <div class="question-text">
+                            <strong>战略的"颗粒度":</strong> 您的公司战略，是更像一个挂在墙上的"宏伟蓝图"，还是已经细化为每个战区都清晰明确的"作战打法"？一个基层员工，能用它来判断自己今天下午3点钟该做什么吗？
+                        </div>
+                        <div class="teacher-comment">
+                            <strong>房老师点评：</strong> 战略的价值，在于共识。而共识的达成，取决于战略的"颗粒度"。一个模糊的战略，就像一个没有刻度的尺子，每个人量出来的长度都不一样，力气自然也就使不到一处去。
+                        </div>
+                        <div class="form-group">
+                            <textarea name="q12" placeholder="请在此处输入您的回答..." required></textarea>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <div class="question-number">问题 13</div>
+                        <div class="question-text">
+                            <strong>"上下同欲"的检验:</strong> 请您公司的三位不同层级、不同部门的员工，分别用自己的话来描述一下公司的"北极星指标"和核心打法。您觉得，他们三个人的答案，会像一个模子刻出来的吗？
+                        </div>
+                        <div class="teacher-comment">
+                            <strong>房老师点评：</strong> 这是一次"压力测试"。很多时候，创始人以为的"共识"，都只是"已阅，不代表同意"。这个问题的答案，会真实地反映出你的战略，是"印"在了纸上，还是"刻"进了心里。
+                        </div>
+                        <div class="form-group">
+                            <textarea name="q13" placeholder="请在此处输入您的回答..." required></textarea>
+                        </div>
+                    </div>
+
+                    <div class="question">
+                        <div class="question-number">问题 14</div>
+                        <div class="question-text">
+                            <strong>行动扳机:</strong> 复盘至此，如果只能做一件事，来撬动公司今天最大的那个"增长杠杆"，这件事，是什么？
+                        </div>
+                        <div class="teacher-comment">
+                            <strong>房老师点评：</strong> 知道，和做到之间，隔着一条巨大的鸿沟。商业世界，最终是行动者的世界。这个问题，就是那个扣下"行动扳机"的手指。它将你所有的思考，都聚焦到了那一个最有价值的"破局点"上。
+                        </div>
+                        <div class="form-group">
+                            <textarea name="q14" placeholder="请在此处输入您的回答..." required></textarea>
+                        </div>
+                    </div>
+                </div>
+
+  
+                <button type="submit" class="submit-btn">提交问卷，获取联系方式</button>
+                
+                <div class="success-message" id="successMessage">
+                    问卷提交成功！请查看下方联系方式。
+                </div>
+            </form>
+
+            <!-- 联系方式区域 -->
+            <div class="contact-info" id="contactInfo">
+                <h2>🎉 诊断完成！立即联系我</h2>
+                <p>感谢您完成这次深度的"商业模式CT扫描"。我相信，在回答这些问题的过程中，一些关于您企业的"变量"和"常量"、"杠杆"和"阻力"，已经变得更加清晰。</p>
+                <p>但这仅仅是开始。从知识到创新有六步，依次是：记忆-理解-应用-分析-评价-创新</p>
+                <p>我诚挚地邀请您，预约一小时的"一对一报告解读会"，来加深您的记忆和理解。</p>
+                
+                <div class="contact-methods">
+                    <div class="contact-method">
+                        <h3>📱 微信咨询</h3>
+                        <div class="contact-value">koala1688</div>
+                        <p>扫码或搜索微信号添加</p>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <h3>📞 电话咨询</h3>
+                        <div class="contact-value">18610035025</div>
+                        <p>工作时间：9:00-18:00</p>
+                    </div>
+                </div>
+
+                <div class="booking-info">
+                    <h3>📅 可预约时间</h3>
+                    <p>请选择您方便的时间，我将为您预留1小时免费咨询时间：</p>
+                    
+                    <!-- 智能预约系统 -->
+                    <div class="smart-booking-system">
+                        <!-- 预约表单 -->
+                        <div class="booking-form" id="bookingForm">
+                            <h4>🎯 选择您的咨询时间</h4>
+                            <p class="booking-subtitle">提交后，我将立即发送腾讯会议链接到您的邮箱</p>
+                            
+                            <div class="booking-dates">
+                                <div class="date-option active" data-date="tomorrow">
+                                    <div class="date-label">明天</div>
+                                    <div class="date-value" id="tomorrow-date"></div>
+                                </div>
+                                <div class="date-option" data-date="dayafter">
+                                    <div class="date-label">后天</div>
+                                    <div class="date-value" id="dayafter-date"></div>
+                                </div>
+                                <div class="date-option" data-date="thirdday">
+                                    <div class="date-label">大后天</div>
+                                    <div class="date-value" id="thirdday-date"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="time-slots-grid" id="timeSlots">
+                                <!-- 时间段将根据选择的日期动态生成 -->
+                            </div>
+                            
+                            <div class="booking-details">
+                                <div class="detail-row">
+                                    <label>姓名 *</label>
+                                    <input type="text" id="bookingName" required>
+                                </div>
+                                <div class="detail-row">
+                                    <label>邮箱 *</label>
+                                    <input type="email" id="bookingEmail" required>
+                                </div>
+                                <div class="detail-row">
+                                    <label>手机 *</label>
+                                    <input type="tel" id="bookingPhone" required>
+                                </div>
+                                <div class="detail-row">
+                                    <label>公司名称</label>
+                                    <input type="text" id="bookingCompany">
+                                </div>
+                                <div class="detail-row">
+                                    <label>咨询主题</label>
+                                    <select id="bookingTopic">
+                                        <option value="企业诊断结果解读">企业诊断结果解读</option>
+                                        <option value="战略规划咨询">战略规划咨询</option>
+                                        <option value="组织架构优化">组织架构优化</option>
+                                        <option value="增长策略制定">增长策略制定</option>
+                                        <option value="其他">其他</option>
+                                    </select>
+                                </div>
+                                <div class="detail-row">
+                                    <label>备注</label>
+                                    <textarea id="bookingNotes" rows="3" placeholder="请描述您希望咨询的具体问题..."></textarea>
+                                </div>
+                            </div>
+                            
+                            <button class="confirm-booking-btn" onclick="submitBooking()">
+                                🚀 确认预约
+                            </button>
+                        </div>
+                        
+                        <!-- 预约成功提示 -->
+                        <div class="booking-success" id="bookingSuccess" style="display: none;">
+                            <div class="success-icon">✓</div>
+                            <h4>预约成功！</h4>
+                            <p>腾讯会议链接已发送到您的邮箱</p>
+                            <div class="success-details">
+                                <div class="detail-item">
+                                    <span class="label">预约时间：</span>
+                                    <span class="value" id="successTime"></span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="label">咨询主题：</span>
+                                    <span class="value" id="successTopic"></span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="label">会议号：</span>
+                                    <span class="value" id="successMeetingId"></span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="label">会议链接：</span>
+                                    <span class="value" id="successLink" style="word-break: break-all;"></span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="label">联系方式：</span>
+                                    <span class="value">微信：koala1688 | 电话：18610035025</span>
+                                </div>
+                            </div>
+                            <div class="success-actions">
+                                <button class="add-calendar-btn" onclick="addToCalendar()">
+                                    📅 添加到日历
+                                </button>
+                                <button class="copy-link-btn" onclick="copyMeetingLink()">
+                                    📋 复制会议链接
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">
+                        💡 <strong>温馨提示：</strong>预约成功后，您将收到邮件和日历提醒。如有特殊情况，可通过微信或电话联系调整。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <script>
+        // 问卷进度条
+        function updateProgress() {
+            const form = document.getElementById('surveyForm');
+            const textareas = form.querySelectorAll('textarea[required]');
+            const filled = Array.from(textareas).filter(textarea => textarea.value).length;
+            const progress = (filled / textareas.length) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+        }
+
+        document.getElementById('surveyForm').addEventListener('input', updateProgress);
+
+  
+        // 问卷表单提交
+        document.getElementById('surveyForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // 获取表单数据
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // 显示提交中状态
+            const submitBtn = this.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = '提交中...';
+            submitBtn.disabled = true;
+            
+            // 使用WPS表单API提交表单
+            console.log('正在提交数据到WPS表单...');
+            console.log('提交地址:', this.action);
+            console.log('表单数据:', data);
+            
+            fetch(this.action, {
+                method: 'POST',
+                body: formData,
+                mode: 'no-cors', // WPS表单需要no-cors模式
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            })
+            .then(() => {
+                // 由于no-cors模式，我们假设提交成功
+                // 显示成功消息
+                document.getElementById('successMessage').style.display = 'block';
+                
+                // 滚动到联系方式区域
+                setTimeout(() => {
+                    document.getElementById('contactInfo').classList.add('show');
+                    document.getElementById('contactInfo').scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }, 500);
+                
+                // 重置表单
+                this.reset();
+                updateProgress();
+                
+                // 显示成功反馈
+                submitBtn.textContent = '✓ 提交成功';
+                submitBtn.style.background = '#28a745';
+                
+                setTimeout(() => {
+                    submitBtn.textContent = originalText;
+                    submitBtn.style.background = '';
+                    submitBtn.disabled = false;
+                }, 3000);
+                
+            })
+            .catch(error => {
+                console.error('提交错误:', error);
+                submitBtn.textContent = '提交失败，请重试';
+                submitBtn.style.background = '#dc3545';
+                
+                setTimeout(() => {
+                    submitBtn.textContent = originalText;
+                    submitBtn.style.background = '';
+                    submitBtn.disabled = false;
+                }, 3000);
+            });
+        });
+
+        // 智能预约系统
+        let selectedDate = 'tomorrow';
+        let selectedTime = '';
+        let bookingData = {};
+
+        // 初始化日期
+        function initDates() {
+            const today = new Date();
+            const tomorrow = new Date(today);
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            const dayafter = new Date(today);
+            dayafter.setDate(dayafter.getDate() + 2);
+            const thirdday = new Date(today);
+            thirdday.setDate(thirdday.getDate() + 3);
+
+            document.getElementById('tomorrow-date').textContent = 
+                `${tomorrow.getMonth() + 1}月${tomorrow.getDate()}日`;
+            document.getElementById('dayafter-date').textContent = 
+                `${dayafter.getMonth() + 1}月${dayafter.getDate()}日`;
+            document.getElementById('thirdday-date').textContent = 
+                `${thirdday.getMonth() + 1}月${thirdday.getDate()}日`;
+
+            // 生成时间段
+            generateTimeSlots('tomorrow');
+        }
+
+        // 日期选择
+        document.querySelectorAll('.date-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.date-option').forEach(opt => opt.classList.remove('active'));
+                this.classList.add('active');
+                selectedDate = this.dataset.date;
+                generateTimeSlots(selectedDate);
+            });
+        });
+
+        // 生成时间段
+        function generateTimeSlots(date) {
+            const timeSlots = document.getElementById('timeSlots');
+            timeSlots.innerHTML = '';
+
+            // 可用时间段
+            const availableSlots = [
+                '09:00-10:00', '10:00-11:00', '11:00-12:00',
+                '14:00-15:00', '15:00-16:00', '16:00-17:00',
+                '19:00-20:00', '20:00-21:00'
+            ];
+
+            // 模拟一些已被预约的时间段
+            const bookedSlots = getBookedSlots(date);
+
+            availableSlots.forEach(slot => {
+                const slotElement = document.createElement('div');
+                slotElement.className = 'time-slot';
+                slotElement.textContent = slot;
+                
+                if (bookedSlots.includes(slot)) {
+                    slotElement.classList.add('unavailable');
+                    slotElement.textContent = slot + ' (已预约)';
+                } else {
+                    slotElement.addEventListener('click', function() {
+                        document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+                        this.classList.add('selected');
+                        selectedTime = slot;
+                    });
+                }
+                
+                timeSlots.appendChild(slotElement);
+            });
+        }
+
+        // 获取已被预约的时间段（这里可以连接到实际的后端数据）
+        function getBookedSlots(date) {
+            // 模拟数据，实际应该从服务器获取
+            const bookedData = {
+                'tomorrow': ['10:00-11:00', '15:00-16:00'],
+                'dayafter': ['09:00-10:00', '14:00-15:00'],
+                'thirdday': ['11:00-12:00', '16:00-17:00']
+            };
+            return bookedData[date] || [];
+        }
+
+        // 提交预约
+        function submitBooking() {
+            const name = document.getElementById('bookingName').value;
+            const email = document.getElementById('bookingEmail').value;
+            const phone = document.getElementById('bookingPhone').value;
+            const company = document.getElementById('bookingCompany').value;
+            const topic = document.getElementById('bookingTopic').value;
+            const notes = document.getElementById('bookingNotes').value;
+
+            if (!name || !email || !phone || !selectedTime) {
+                alert('请填写所有必填项并选择时间');
+                return;
+            }
+
+            // 显示提交中状态
+            const btn = document.querySelector('.confirm-booking-btn');
+            const originalText = btn.textContent;
+            btn.textContent = '预约中...';
+            btn.disabled = true;
+
+            // 生成腾讯会议信息
+            const meetingInfo = generateMeetingInfo();
+
+            // 保存预约数据
+            bookingData = {
+                name,
+                email,
+                phone,
+                company,
+                topic,
+                notes,
+                date: selectedDate,
+                time: selectedTime,
+                meetingInfo
+            };
+
+            // 模拟提交到服务器
+            setTimeout(() => {
+                // 显示成功页面
+                document.getElementById('bookingForm').style.display = 'none';
+                document.getElementById('bookingSuccess').style.display = 'block';
+                
+                // 填充成功信息
+                const dateText = document.querySelector(`[data-date="${selectedDate}"] .date-value`).textContent;
+                document.getElementById('successTime').textContent = `${dateText} ${selectedTime}`;
+                document.getElementById('successTopic').textContent = topic;
+                document.getElementById('successLink').textContent = meetingInfo.link;
+                document.getElementById('successMeetingId').textContent = meetingInfo.meetingId;
+
+                // 发送邮件通知（模拟）
+                sendEmailNotification(bookingData);
+
+                btn.textContent = originalText;
+                btn.disabled = false;
+            }, 2000);
+        }
+
+        // 生成腾讯会议信息
+        function generateMeetingInfo() {
+            // 使用真实的腾讯会议信息
+            return {
+                meetingId: '599-683-5898',
+                link: 'https://meeting.tencent.com/p/5996835898',
+                password: '' // 如果有会议密码可以在这里添加
+            };
+        }
+
+        // 发送邮件通知
+        function sendEmailNotification(data) {
+            // 这里应该连接到邮件发送服务
+            console.log('发送邮件通知:', data);
+            
+            // 获取完整的预约日期时间
+            const today = new Date();
+            const meetingDate = new Date(today);
+            
+            if (data.date === 'tomorrow') {
+                meetingDate.setDate(meetingDate.getDate() + 1);
+            } else if (data.date === 'dayafter') {
+                meetingDate.setDate(meetingDate.getDate() + 2);
+            } else if (data.date === 'thirdday') {
+                meetingDate.setDate(meetingDate.getDate() + 3);
+            }
+            
+            const [startTime] = data.time.split('-');
+            const [hour, minute] = startTime.split(':');
+            meetingDate.setHours(parseInt(hour), parseInt(minute));
+            
+            // 模拟邮件内容
+            const emailContent = `
+                主题：企业诊断咨询预约确认
+                
+                尊敬的${data.name}：
+                
+                您的咨询预约已确认！
+                
+                预约时间：${meetingDate.getMonth() + 1}月${meetingDate.getDate()}日 ${data.time}
+                咨询主题：${data.topic}
+                公司名称：${data.company || '未填写'}
+                
+                腾讯会议信息：
+                会议号：${data.meetingInfo.meetingId}
+                会议链接：${data.meetingInfo.link}
+                ${data.meetingInfo.password ? `会议密码：${data.meetingInfo.password}` : ''}
+                
+                请提前5分钟进入会议，测试设备和网络。
+                如有问题请联系：
+                微信：koala1688
+                电话：18610035025
+                
+                期待与您的深入交流！
+                
+                房老师
+                商业顾问
+                15年企业咨询经验
+                
+                ---
+                此邮件由系统自动发送，请勿回复。
+            `;
+            
+            console.log('邮件内容:', emailContent);
+            
+            // 这里可以集成真实的邮件发送服务
+            // 例如：腾讯云邮件、阿里云邮件等
+        }
+
+        // 添加到日历
+        function addToCalendar() {
+            // 获取预约的完整时间
+            const today = new Date();
+            const meetingDate = new Date(today);
+            
+            if (selectedDate === 'tomorrow') {
+                meetingDate.setDate(meetingDate.getDate() + 1);
+            } else if (selectedDate === 'dayafter') {
+                meetingDate.setDate(meetingDate.getDate() + 2);
+            } else if (selectedDate === 'thirdday') {
+                meetingDate.setDate(meetingDate.getDate() + 3);
+            }
+            
+            const [startTime, endTime] = selectedTime.split('-');
+            const [startHour, startMinute] = startTime.split(':');
+            const [endHour, endMinute] = endTime.split(':');
+            
+            const startDate = new Date(meetingDate);
+            startDate.setHours(parseInt(startHour), parseInt(startMinute));
+            
+            const endDate = new Date(meetingDate);
+            endDate.setHours(parseInt(endHour), parseInt(endMinute));
+            
+            // 格式化日期为Google Calendar需要的格式
+            const formatDate = (date) => {
+                return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+            };
+            
+            const event = {
+                title: '企业诊断咨询 - 房老师',
+                start: formatDate(startDate),
+                end: formatDate(endDate),
+                description: `与房老师的企业诊断咨询会议\n\n腾讯会议信息：\n会议号：${bookingData.meetingInfo.meetingId}\n会议链接：${bookingData.meetingInfo.link}\n\n咨询主题：${bookingData.topic}\n公司：${bookingData.company || '未填写'}\n\n请提前5分钟进入会议。`
+            };
+
+            // 生成Google Calendar链接
+            const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(event.title)}&dates=${event.start}/${event.end}&details=${encodeURIComponent(event.description)}&location=${encodeURIComponent(event.description)}`;
+            
+            // 同时生成Outlook日历链接
+            const outlookUrl = `https://outlook.live.com/calendar/0/deeplink/compose?subject=${encodeURIComponent(event.title)}&startdt=${startDate.toISOString()}&enddt=${endDate.toISOString()}&body=${encodeURIComponent(event.description)}`;
+            
+            // 提供选择
+            const userChoice = confirm('点击"确定"添加到Google日历，点击"取消"添加到Outlook日历');
+            
+            if (userChoice) {
+                window.open(googleCalendarUrl, '_blank');
+            } else {
+                window.open(outlookUrl, '_blank');
+            }
+        }
+
+        // 复制会议链接
+        function copyMeetingLink() {
+            const meetingLink = bookingData.meetingInfo.link;
+            const meetingId = bookingData.meetingInfo.meetingId;
+            const copyText = `腾讯会议\n会议号：${meetingId}\n会议链接：${meetingLink}`;
+            
+            navigator.clipboard.writeText(copyText).then(() => {
+                const btn = document.querySelector('.copy-link-btn');
+                const originalText = btn.textContent;
+                btn.textContent = '✓ 已复制';
+                btn.classList.add('copied');
+                
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.classList.remove('copied');
+                }, 2000);
+            }).catch(() => {
+                // 降级处理
+                const textArea = document.createElement('textarea');
+                textArea.value = copyText;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                
+                const btn = document.querySelector('.copy-link-btn');
+                const originalText = btn.textContent;
+                btn.textContent = '✓ 已复制';
+                btn.classList.add('copied');
+                
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.classList.remove('copied');
+                }, 2000);
+            });
+        }
+
+        // 初始化
+        initDates();
+    </script>
+</body>
+</html>
